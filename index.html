@@ -1,0 +1,49 @@
+<!doctype html>
+<html ng-app="rayApp">
+   
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+          <!-- load angular and angular route via CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+        <script src="script.js"></script>
+   </head>
+   
+  <body>
+    <div class="container">
+      <div ng-controller="storeController">
+        <h1>Welcome to the store!</h1>
+        <ul class="list-group text-center">
+          <li class="col-xs-6 col-md-3 col-sm-3 col-lg-3 list-group-item" ng-repeat="product in productsData">
+            <figure>
+                <span style="font-size:5em;" class="glyphicon glyphicon-apple"></span></p>
+                <figcaption>
+                  {{product.name}}  
+						                      <h3>{{product.price | currency}}</h3>
+              </figcaption>
+            </figure>
+            <input class="btn btn-success" type="button" ng-click="addItemToCart(product)" value="BUY" />
+          </li>
+        </ul>
+        <div ng-show="cartArray.length !== 0">
+          <h1>Cart</h1>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="c in cartArray">
+              <h4>{{c.name}} |                <span style="color:blue"> {{c.count}}x </span>
+ | {{c.price*c.count | currency}}</h4>
+              <input class="btn btn-danger" type="button" ng-click="removeItemFromCart(c)" value="Remove" />
+            </li>
+          </ul>
+
+          <h3>Total: {{total | currency}}</h3>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
