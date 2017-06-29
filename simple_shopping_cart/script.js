@@ -12,21 +12,24 @@
 		console.log("addItemToCart");
 
 		if ($scope.cartArray.length === 0) {
-			// if the product doesn't exist in the cart, add it to the array
+			// if there are no products in the cart, add it to the array
 			product.count = 1;
 			$scope.cartArray.push(product);
-		} else {
-			var repeat = false;
+		}
+		else
+		{
+			var multiple = false;
 
 			// if the product is already in the cart, increase it's quantity
 			for (var i = 0; i < $scope.cartArray.length; i++) {
 				if ($scope.cartArray[i].id === product.id) {
-					repeat = true;
 					$scope.cartArray[i].count += 1;
+					multiple = true;
 				}
 			}
 
-			if (!repeat) {
+			// if the product is not in the cart, add it to the cart
+			if (!multiple) {
 				product.count = 1;
 				$scope.cartArray.push(product);
 			}
