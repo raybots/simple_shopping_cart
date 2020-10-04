@@ -18,14 +18,14 @@
   <body>
     <div class="container">
       <div ng-controller="storeController">
-        <h1>Welcome to the Apple shop!</h1>
+        <h1>Welcome to the Apple Store!</h1>
         <ul class="list-group text-center">
           <li class="col-xs-6 col-md-3 col-sm-3 col-lg-3 list-group-item" ng-repeat="product in productsData">
             <figure>
                 <span style="font-size:5em;" class="glyphicon glyphicon-apple"></span></p>
                 <figcaption>
                   {{product.name}}  
-						                      <h3>{{product.price | currency}}</h3>
+						                      <h3>{{product.price | currency:'£'}}</h3>
               </figcaption>
             </figure>
             <input class="btn btn-success" type="button" ng-click="addItemToCart(product)" value="BUY" />
@@ -36,12 +36,12 @@
           <ul class="list-group">
             <li class="list-group-item" ng-repeat="c in cartArray">
               <h4>{{c.name}} |                <span style="color:blue"> {{c.count}}x </span>
- | {{c.price*c.count | currency}}</h4>
+ | {{c.price*c.count | currency:'£'}}</h4>
               <input class="btn btn-danger" type="button" ng-click="removeItemFromCart(c)" value="Remove" />
             </li>
           </ul>
 
-          <h3>Total: {{total | currency}}</h3>
+          <h3>Total: {{total | currency:'£'}}</h3>
         </div>
       </div>
     </div>

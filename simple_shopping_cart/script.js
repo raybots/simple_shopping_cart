@@ -46,7 +46,7 @@
 			product.count -= 1;
 		}
 		else if(product.count === 1){
-			// remove the prodoct from the array if the quantity will be 0
+			// remove the product from the array if the quantity will be 0
 			var index = $scope.cartArray.indexOf(product);
 			$scope.cartArray.splice(index, 1);
 		}
